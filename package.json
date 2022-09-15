@@ -1,0 +1,23 @@
+{
+    "name": "@tbor/suit",
+    "version": "1.0.0",
+    "description": "SUIT (simple user interface tools)",
+    "main": "index.js",
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/cli": "^7.18.10",
+        "babel-preset-sui": "^3.49.0"
+    },
+    "babel": {
+        "presets": [
+            "sui"
+        ]
+    }
+}
