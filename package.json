@@ -18,8 +18,12 @@
         "lib:domain": "npm run lib --workspace=@ftools/suit-domain",
         "lib:router": "npm run lib --workspace=@ftools/suit-router"
     },
-    "author": "",
-    "license": "ISC",
+    "author": "@tbor00",
+    "license": "MIT license",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tbor00/ftools"
+    },
     "devDependencies": {
         "@babel/cli": "^7.18.10",
         "babel-preset-sui": "^3.49.0",
