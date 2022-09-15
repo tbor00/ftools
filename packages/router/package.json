@@ -1,5 +1,5 @@
 {
-    "name": "@suit/suit-router",
+    "name": "@ftools/suit-router",
     "description": "This repo represents a tools for react router dom",
     "version": "1.0.0",
     "main": "lib/index.js",

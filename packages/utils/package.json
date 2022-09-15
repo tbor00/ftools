@@ -1,5 +1,5 @@
 {
-    "name": "@suit/suit-utils",
+    "name": "@ftools/suit-utils",
     "version": "1.0.0",
     "description": "This is a repo for the common utils on frontend projects",
     "main": "lib/index.js",
