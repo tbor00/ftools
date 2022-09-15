@@ -3,11 +3,18 @@
     "version": "1.0.0",
     "description": "SUIT (simple user interface tools)",
     "main": "index.js",
+    "engines": {
+        "node": ">=17",
+        "npm": ">=7"
+    },
     "workspaces": [
         "packages/*"
     ],
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lib:utils": "npm run lib --workspace=@tbor/suit-utils",
+        "lib:domain": "npm run lib --workspace=@tbor/suit-domain",
+        "lib:router": "npm run lib --workspace=@tbor/suit-router"
     },
     "author": "",
     "license": "ISC",

@@ -1,12 +1,13 @@
 {
-  "name": "domain",
-  "version": "1.0.0",
-  "description": "",
-  "main": "HttpClient.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "@tbor/suit-domain",
+    "version": "1.0.0",
+    "description": "This is a repo for the Http request and methods",
+    "main": "lib/HttpClient.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lib": "babel --presets sui HttpClient.js --out-dir ./lib"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }
