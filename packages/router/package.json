@@ -1,5 +1,5 @@
 {
-    "name": "@tbor/suit-router",
+    "name": "@suit/suit-router",
     "description": "This repo represents a tools for react router dom",
     "version": "1.0.0",
     "main": "lib/index.js",

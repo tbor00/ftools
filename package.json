@@ -1,5 +1,5 @@
 {
-    "name": "@tbor/suit",
+    "name": "@suit/suit",
     "version": "1.0.0",
     "description": "SUIT (simple user interface tools)",
     "main": "index.js",
