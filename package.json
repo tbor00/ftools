@@ -12,6 +12,7 @@
     ],
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
+        "format:all": "prettier --write ./packages/**/*",
         "lib:utils": "npm run lib --workspace=@tbor/suit-utils",
         "lib:domain": "npm run lib --workspace=@tbor/suit-domain",
         "lib:router": "npm run lib --workspace=@tbor/suit-router"
@@ -20,7 +21,8 @@
     "license": "ISC",
     "devDependencies": {
         "@babel/cli": "^7.18.10",
-        "babel-preset-sui": "^3.49.0"
+        "babel-preset-sui": "^3.49.0",
+        "prettier": "^2.7.1"
     },
     "babel": {
         "presets": [
