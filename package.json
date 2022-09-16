@@ -32,9 +32,9 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "format:all": "prettier --write ./packages/**/*",
         "lib:all": "npm run lib --workspaces",
-        "lib:utils": "npm run lib --workspace=@ftools/suit-utils",
-        "lib:domain": "npm run lib --workspace=@ftools/suit-domain",
-        "lib:router": "npm run lib --workspace=@ftools/suit-router"
+        "lib:utils": "npm run lib --workspace=@ftools-suit/utils",
+        "lib:network": "npm run lib --workspace=@ftools-suit/network",
+        "lib:router": "npm run lib --workspace=@ftools-suit/router"
     },
     "devDependencies": {
         "@babel/cli": "^7.18.10",

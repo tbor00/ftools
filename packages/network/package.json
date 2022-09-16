@@ -1,5 +1,5 @@
 {
-    "name": "@ftools-suit/domain",
+    "name": "@ftools-suit/network",
     "version": "1.0.0",
     "description": "This is a repo for the Http request and methods",
     "main": "lib/index.js",
