@@ -24,6 +24,15 @@ const cleanConfigHttp = (source) => {
     return target
 }
 
+/**
+ * It takes a method, url, body, options, and a middleware function, and returns a promise
+ * @param method - The HTTP method to use.
+ * @param url - The URL to make the request to.
+ * @param body - The body of the request.
+ * @param options - {
+ * @param [middleware] - This is the fetch function.
+ * @returns A function that takes in a config object and returns a promise.
+ */
 const request = (method, url, body, options, middleware = fetch) => {
     const dirtyConfig = {
         method,
