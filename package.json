@@ -1,5 +1,5 @@
 {
-    "name": "@ftools/suit",
+    "name": "@ftools-suit/root",
     "version": "1.0.0",
     "description": "SUIT (simple user interface tools)",
     "main": "index.js",

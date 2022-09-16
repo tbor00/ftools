@@ -1,5 +1,5 @@
 {
-    "name": "@ftools/suit-domain",
+    "name": "@ftools-suit/domain",
     "version": "1.0.0",
     "description": "This is a repo for the Http request and methods",
     "main": "lib/HttpClient.js",
