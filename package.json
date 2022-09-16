@@ -2,6 +2,24 @@
     "name": "@ftools-suit/root",
     "version": "1.0.0",
     "description": "SUIT (simple user interface tools)",
+    "bugs": "https://github.com/tbor00/ftools/issues",
+    "keywords": [
+        "tools",
+        "ftools",
+        "react",
+        "javascript",
+        "monorepo",
+        "react",
+        "react-dom",
+        "utils",
+        "multipackage"
+    ],
+    "author": "@tbor00",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tbor00/ftools"
+    },
     "main": "index.js",
     "engines": {
         "node": ">=17",
@@ -17,12 +35,6 @@
         "lib:utils": "npm run lib --workspace=@ftools/suit-utils",
         "lib:domain": "npm run lib --workspace=@ftools/suit-domain",
         "lib:router": "npm run lib --workspace=@ftools/suit-router"
-    },
-    "author": "@tbor00",
-    "license": "MIT license",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/tbor00/ftools"
     },
     "devDependencies": {
         "@babel/cli": "^7.18.10",
