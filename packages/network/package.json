@@ -10,11 +10,8 @@
     },
     "keywords": [],
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "axios": "^0.27.2"
-    },
-    "publishConfig": {
-        "access": "public"
     }
 }
