@@ -6,7 +6,7 @@
     "main": "lib/index.js",
     "type": "module",
     "scripts": {
-        "lib": "babel --presets sui ./src --out-dir lib",
+        "lib": "babel ./src --out-dir lib",
         "prepublishOnly": "npm run lib"
     },
     "peerDependencies": {
