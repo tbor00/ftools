@@ -1,2 +1,2 @@
-export * from './axios'
+export { default as HttpClient } from './axios'
 export * from './fetch'
