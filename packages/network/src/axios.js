@@ -21,10 +21,12 @@ const deleteReq = async (url, options) => {
     return request(methods.DELETE, url, undefined, options, axios)
 }
 
-export const HttpClient = {
+const HttpClient = {
     get,
     post,
     put,
     patch,
     delete: deleteReq
 }
+
+export default HttpClient
