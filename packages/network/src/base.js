@@ -33,16 +33,16 @@ const cleanConfigHttp = (source) => {
  * @param [middleware] - This is the fetch function.
  * @returns A function that takes in a config object and returns a promise.
  */
-const request = (method, url, body, options, middleware = fetch) => {
+const request = (method, url, body, options = {}, middleware = fetch) => {
     const dirtyConfig = {
         method,
         url,
         data: body,
-        params: options.params,
-        headers: options.headers,
-        withCredentials: options.withCredentials,
-        responseType: options.responseType,
-        signal: options.signal,
+        params: options?.params,
+        headers: options?.headers,
+        withCredentials: options?.withCredentials,
+        responseType: options?.responseType,
+        signal: options?.signal,
         timeout: 0
     }
 
