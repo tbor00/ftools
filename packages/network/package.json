@@ -4,6 +4,7 @@
     "private": false,
     "description": "This is a repo for the Http request and methods",
     "main": "lib/index.js",
+    "type": "module",
     "scripts": {
         "lib": "babel --presets sui ./src --out-dir ./lib"
     },

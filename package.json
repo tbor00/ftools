@@ -31,6 +31,8 @@
     ],
     "scripts": {
         "format": "prettier --write ./packages/**/*",
+        "version-packages": "changeset version",
+        "release": "npm run lib && changeset publish",
         "lib": "turbo run lib",
         "test": "turbo run test",
         "dev": "turbo run dev"
