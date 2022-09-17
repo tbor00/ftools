@@ -1,6 +1,7 @@
 {
     "name": "@ftools-suit/network",
     "version": "1.0.0",
+    "private": false,
     "description": "This is a repo for the Http request and methods",
     "main": "lib/index.js",
     "scripts": {
@@ -11,5 +12,8 @@
     "license": "ISC",
     "dependencies": {
         "axios": "^0.27.2"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }

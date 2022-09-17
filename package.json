@@ -1,6 +1,7 @@
 {
     "name": "@ftools-suit/root",
     "version": "1.0.0",
+    "private": false,
     "description": "SUIT (simple user interface tools)",
     "bugs": "https://github.com/tbor00/ftools/issues",
     "keywords": [
@@ -36,6 +37,7 @@
     },
     "devDependencies": {
         "@babel/cli": "^7.18.10",
+        "@changesets/cli": "^2.24.4",
         "babel-preset-sui": "^3.49.0",
         "prettier": "^2.7.1",
         "turbo": "^1.4.7"
