@@ -1,4 +1,4 @@
-name: Build packages
+name: Ci packages
 
 on:
     push:
@@ -9,6 +9,9 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        env:
+            TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+            TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
         steps:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v2
@@ -17,4 +20,4 @@ jobs:
                   cache: npm
             - run: npm install
             - name: compile
-              run: npm run lib:all
+              run: npm run lib

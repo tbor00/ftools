@@ -1,4 +1,4 @@
-name: format code
+name: Format code
 
 on:
     push:
@@ -17,4 +17,4 @@ jobs:
                   cache: npm
             - run: npm install
             - name: prettier
-              run: npm run format:all
+              run: npm run format
