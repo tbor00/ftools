@@ -3,13 +3,26 @@
     "version": "1.1.0",
     "description": "This is a repo for the Http request and methods",
     "main": "lib/index.js",
+    "files": [
+        "lib/*",
+        "README"
+    ],
+    "exports": {
+        ".": "./lib/index.js",
+        "./fetch": "./lib/fetch.js",
+        "./axios": "./lib/axios.js",
+        "./base": "./lib/base.js"
+    },
     "scripts": {
-        "lib": "babel --presets sui ./src --out-dir ./lib"
+        "lib": "babel ./src --out-dir ./lib"
     },
     "keywords": [],
     "author": "",
     "license": "MIT",
     "dependencies": {
         "axios": "^0.27.2"
+    },
+    "babel": {
+        "extends": "../../babel.config.json"
     }
 }

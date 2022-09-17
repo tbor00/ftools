@@ -6,9 +6,12 @@
     "main": "lib/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "lib": "babel --presets sui ./src --out-dir ./lib"
+        "lib": "babel ./src --out-dir ./lib"
     },
     "keywords": [],
     "author": "",
-    "license": "MIT"
+    "license": "MIT",
+    "babel": {
+        "extends": "../../babel.config.json"
+    }
 }
