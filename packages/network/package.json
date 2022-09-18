@@ -4,9 +4,14 @@
     "description": "This is a repo for the Http request and methods",
     "main": "lib/index.js",
     "types": "lib/types/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tbor00/ftools"
+    },
+    "homepage": "https://github.com/tbor00/ftools/tree/main/packages/network#readme",
     "files": [
         "lib/*",
-        "README"
+        "README.md"
     ],
     "exports": {
         ".": "./lib/index.js",
