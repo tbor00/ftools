@@ -1,5 +1,11 @@
 # @ftools-suit/network
 
+## 1.2.1
+
+### Patch Changes
+
+-   Compatibility with typescript
+
 ## 1.2.0
 
 ### Minor Changes
