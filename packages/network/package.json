@@ -26,6 +26,7 @@
     },
     "scripts": {
         "test": "jest",
+        "test:watch": "jest --watch",
         "lib": "tsc && babel ./src --out-dir ./lib"
     },
     "keywords": [],
@@ -36,5 +37,9 @@
     },
     "babel": {
         "extends": "../../babel.config.json"
+    },
+    "jest": {
+        "automock": false,
+        "testRegex": "tests/.*?(test)\\.js$"
     }
 }

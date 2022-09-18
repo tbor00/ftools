@@ -10,7 +10,6 @@
         "README"
     ],
     "scripts": {
-        "test": "jest",
         "lib": "tsc && babel ./src --out-dir ./lib"
     },
     "keywords": [],

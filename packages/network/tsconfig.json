@@ -3,5 +3,6 @@
     "compilerOptions": {
         "outDir": "lib/types"
     },
-    "include": ["src/**/*"]
+    "include": ["src/**/*"],
+    "exclude": ["tests/**/*"]
 }
