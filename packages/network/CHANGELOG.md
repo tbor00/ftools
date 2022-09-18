@@ -1,5 +1,14 @@
 # @ftools-suit/network
 
+## 1.2.2
+
+### Patch Changes
+
+-   c8ed65a: - refactor base file
+    -   add more information to package
+    -   add readme
+    -   add tests
+
 ## 1.2.1
 
 ### Patch Changes
