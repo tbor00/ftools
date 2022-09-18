@@ -9,21 +9,19 @@
         "README"
     ],
     "exports": {
-        ".": {
-            "default": "./lib/index.js",
-            "types": "./lib/types/index.d.ts"
-        },
-        "./fetch": {
-            "default": "./lib/fetch.js",
-            "types": "./lib/types/fetch.d.ts"
-        },
-        "./axios": {
-            "default": "./lib/axios.js",
-            "types": "./lib/types/axios.d.ts"
-        },
-        "./base": {
-            "default": "./lib/base.js",
-            "types": "./lib/types/base.d.ts"
+        ".": "./lib/index.js",
+        "./fetch": "./lib/fetch.js",
+        "./axios": "./lib/axios.js",
+        "./base": "./lib/base.js"
+    },
+    "typesVersions": {
+        "*": {
+            "fetch": [
+                "./lib/types/fetch.d.ts"
+            ],
+            "axios": [
+                "./lib/types/axios.d.ts"
+            ]
         }
     },
     "scripts": {
