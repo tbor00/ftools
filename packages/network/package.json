@@ -14,6 +14,16 @@
         "./axios": "./lib/axios.js",
         "./base": "./lib/base.js"
     },
+    "typesVersions": {
+        "*": {
+            "fetch": [
+                "./lib/types/fetch.d.ts"
+            ],
+            "axios": [
+                "./lib/types/axios.d.ts"
+            ]
+        }
+    },
     "scripts": {
         "lib": "tsc && babel ./src --out-dir ./lib"
     },
