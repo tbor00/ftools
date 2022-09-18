@@ -6,9 +6,8 @@
             "outputs": ["lib/**"]
         },
         "test": {
-            "dependsOn": ["lib"],
             "outputs": [],
-            "inputs": ["src/**/*.js", "src/**/*.ts", "test/**/*.js", "test/**/*.jsx"]
+            "inputs": ["tests/**/*.js", "tests/**/*.jsx"]
         },
         "deploy": {
             "dependsOn": ["lib", "test", "lint"],
