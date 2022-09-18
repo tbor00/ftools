@@ -23,7 +23,7 @@
     },
     "main": "index.js",
     "engines": {
-        "node": ">=17",
+        "node": ">=15",
         "npm": ">=7"
     },
     "workspaces": [
