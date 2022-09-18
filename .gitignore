@@ -6,3 +6,4 @@ npm-debug.log
 jsconfig.json
 .vscode/
 .turbo
+lib-types/
