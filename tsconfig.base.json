@@ -5,5 +5,5 @@
         "emitDeclarationOnly": true,
         "declarationMap": true
     },
-    "exclude": ["lib/**/*", "node_modules"]
+    "exclude": ["lib/**/*", "node_modules", "tests/**/*"]
 }
