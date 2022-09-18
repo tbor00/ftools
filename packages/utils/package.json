@@ -10,7 +10,6 @@
         "README"
     ],
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "lib": "tsc && babel ./src --out-dir ./lib"
     },
     "keywords": [],
