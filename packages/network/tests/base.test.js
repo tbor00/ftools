@@ -1,6 +1,6 @@
 import { methods, request } from '../src/base'
 
-const goodResponse = {
+const requestResponse = {
     data: {
         site: 'Google',
         mocked: true
@@ -8,11 +8,11 @@ const goodResponse = {
 }
 
 const axios = jest.fn(() => {
-    return Promise.resolve(goodResponse)
+    return Promise.resolve(requestResponse)
 })
 
 global.fetch = jest.fn(() => {
-    return Promise.resolve(goodResponse)
+    return Promise.resolve(requestResponse)
 })
 
 describe('methods object work correctly', () => {
