@@ -4,7 +4,7 @@
     "description": "This is a repo for the common utils on frontend projects",
     "private": false,
     "main": "lib/index.js",
-    "types": "lib-types/index.d.ts",
+    "types": "lib/types/index.d.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "lib": "tsc && babel ./src --out-dir ./lib"
