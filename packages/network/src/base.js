@@ -50,7 +50,7 @@ const request = (method, url, body, options = {}, middleware) => {
     const cleanConfig = cleanConfigHttp(dirtyConfig)
 
     if (!middleware) {
-        delete cleanConfig.method
+        delete cleanConfig.url
         cleanConfig.body = JSON.stringify(body)
         return fetch(url, cleanConfig)
     }
