@@ -3,6 +3,7 @@
     "version": "1.2.0",
     "description": "This is a repo for the Http request and methods",
     "main": "lib/index.js",
+    "types": "lib-types/index.d.ts",
     "files": [
         "lib/*",
         "README"
@@ -14,7 +15,7 @@
         "./base": "./lib/base.js"
     },
     "scripts": {
-        "lib": "babel ./src --out-dir ./lib"
+        "lib": "tsc && babel ./src --out-dir ./lib"
     },
     "keywords": [],
     "author": "",
