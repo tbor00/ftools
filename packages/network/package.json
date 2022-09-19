@@ -32,7 +32,8 @@
     "scripts": {
         "test": "jest",
         "test:watch": "jest --watch",
-        "lib": "tsc && babel ./src --out-dir ./lib"
+        "lib": "tsc && babel ./src --out-dir ./lib",
+        "format": "prettier --write ./src ./tests"
     },
     "keywords": [],
     "author": "",
