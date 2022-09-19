@@ -7,15 +7,14 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+env:
+    TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+    TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
 jobs:
     release:
         name: Release
         runs-on: ubuntu-latest
-        env:
-            TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-            TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         steps:
             - name: Checkout Repo
               uses: actions/checkout@v2
@@ -31,11 +30,13 @@ jobs:
             - name: Running all tests
               run: npm run test
 
-            - name: Run prettier to format code
-              run: npm run format
-
             - name: Create Release Pull Request or Publish to npm
               uses: changesets/action@v1
               with:
                   publish: npm run release
                   version: npm run version-packages
+                  commit: '[ci]: release'
+                  title: '[ci]: release'
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
