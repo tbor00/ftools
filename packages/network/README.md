@@ -11,7 +11,7 @@ npm install @ftools-suit/network
 ## How to imports?
 
 ```js
-import HttpClient, { connection } from '@ftools-suit/network'
+import { connection, HttpClient } from '@ftools-suit/network'
 
 // if your goal is to use only fetch
 import { connection } from '@ftools-suit/network/fetch'
