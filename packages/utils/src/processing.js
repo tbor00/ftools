@@ -28,4 +28,14 @@ const bytesConvert = (bytes) => {
     return `${(bytes / 1024 ** i).toFixed(1)} ${sizes[i]}`
 }
 
-export { getQueryParamsWithProxy, fileSizeByteToMb, bytesConvert }
+/**
+ * It takes a string, converts it to a unicode string, and then removes all the accents
+ * @param str - The string to be normalized.
+ * @returns A function that takes a string as an argument and returns a string with the accents
+ * removed.
+ */
+const removeAccents = (str) => {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+}
+
+export { getQueryParamsWithProxy, fileSizeByteToMb, bytesConvert, removeAccents }
