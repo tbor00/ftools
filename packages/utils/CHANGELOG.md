@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-    -   78d8890: Add more helpers to use
+-   78d8890: Add more helpers to use
 
 ## 1.1.1
 
