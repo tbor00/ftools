@@ -6,10 +6,12 @@
             "outputs": ["lib/**"]
         },
         "format": {
+            "dependsOn": ["^format"],
             "outputs": [],
             "inputs": ["packages/**/*"]
         },
         "test": {
+            "dependsOn": ["^test"],
             "outputs": [],
             "inputs": ["tests/**/*.js", "tests/**/*.jsx"]
         },
