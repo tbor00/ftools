@@ -21,6 +21,20 @@ const deleteReq = async (url, options = {}) => {
     return request(methods.DELETE, url, undefined, options, axios)
 }
 
+/**
+ * It creates an axios instance with the baseUrl and moreOptions passed in
+ * @param baseUrl - The base URL of the API.
+ * @param moreOptions - This is an object that contains any additional options you want to pass to the
+ * axios instance.
+ * @returns An axios instance
+ */
+const createInstance = (baseUrl, moreOptions) => {
+    return axios.create({
+        baseURL: baseUrl,
+        ...moreOptions
+    })
+}
+
 const HttpClient = {
     get,
     post,
@@ -30,3 +44,4 @@ const HttpClient = {
 }
 
 export default HttpClient
+export { createInstance }
