@@ -1,5 +1,12 @@
 # @ftools-suit/utils
 
+## 1.1.2
+
+### Patch Changes
+
+-   7de064b: - 71f665: Update README with basic information
+    -   78d8890: Add more helpers to use
+
 ## 1.1.1
 
 ### Patch Changes
