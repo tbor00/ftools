@@ -1,5 +1,11 @@
 # @ftools-suit/network
 
+## 1.2.3
+
+### Patch Changes
+
+- 71f665: Update README with basic information
+
 ## 1.2.2
 
 ### Patch Changes
