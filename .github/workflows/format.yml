@@ -1,10 +1,8 @@
 name: Format code
 
 on:
-    push:
-        branches: [main]
     pull_request:
-        types: [opened, synchronize]
+        branches: ['main']
 
 jobs:
     format:

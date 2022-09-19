@@ -5,6 +5,10 @@
             "dependsOn": ["^lib"],
             "outputs": ["lib/**"]
         },
+        "format": {
+            "outputs": [],
+            "inputs": ["packages/**/*"]
+        },
         "test": {
             "outputs": [],
             "inputs": ["tests/**/*.js", "tests/**/*.jsx"]

@@ -26,6 +26,9 @@ jobs:
             - name: Running all tests
               run: npm run test
 
+            - name: Run prettier to format code
+              run: npm run format
+
             - name: Create Release Pull Request or Publish to npm
               uses: changesets/action@v1
               with:
