@@ -28,7 +28,7 @@ const deleteReq = async (url, options = {}) => {
  * axios instance.
  * @returns An axios instance
  */
-const createInstance = (baseUrl, moreOptions) => {
+const createInstance = (baseUrl, moreOptions = {}) => {
     return axios.create({
         baseURL: baseUrl,
         ...moreOptions
