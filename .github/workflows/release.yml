@@ -11,6 +11,11 @@ jobs:
     release:
         name: Release
         runs-on: ubuntu-latest
+        env:
+            TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+            TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         steps:
             - name: Checkout Repo
               uses: actions/checkout@v2
@@ -34,8 +39,3 @@ jobs:
               with:
                   publish: npm run release
                   version: npm run version-packages
-              env:
-                  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-                  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
