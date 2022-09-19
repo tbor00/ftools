@@ -3,17 +3,44 @@
     "version": "1.1.1",
     "description": "This is a repo for the common utils on frontend projects",
     "private": false,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tbor00/ftools"
+    },
+    "homepage": "https://github.com/tbor00/ftools/tree/main/packages/utils#readme",
     "main": "lib/index.js",
     "types": "lib/types/index.d.ts",
     "files": [
         "lib/*",
-        "README"
+        "README.md"
     ],
+    "exports": {
+        ".": "./lib/index.js",
+        "./currency": "./lib/currency.js",
+        "./events": "./lib/events.js",
+        "./processing": "./lib/processing.js"
+    },
+    "typesVersions": {
+        "*": {
+            "currency": [
+                "./lib/types/currency.d.ts"
+            ],
+            "events": [
+                "./lib/types/events.d.ts"
+            ],
+            "processing": [
+                "./lib/types/processing.d.ts"
+            ]
+        }
+    },
     "scripts": {
-        "lib": "tsc && babel ./src --out-dir ./lib"
+        "lib": "tsc && babel ./src --out-dir ./lib",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "format": "prettier --write ./src ./tests"
     },
     "keywords": [],
-    "author": "",
+    "author": "@tbor00",
     "license": "MIT",
     "babel": {
         "extends": "../../babel.config.json"
