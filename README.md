@@ -1,4 +1,4 @@
-# @ftools-suit ![release](https://github.com/tbor00/ftools/actions/workflows/release.yml/badge.svg) ![tests](https://github.com/tbor00/ftools/actions/workflows/tests.yml/badge.svg) ![sonarcloud](https://github.com/tbor00/ftools/actions/workflows/sonarcloud.yml/badge.svg)
+# @ftools-suit ![release](https://github.com/tbor00/ftools/actions/workflows/release.yml/badge.svg) ![tests](https://github.com/tbor00/ftools/actions/workflows/tests.yml/badge.svg) ![sonarcloud](https://github.com/tbor00/ftools/actions/workflows/sonarcloud.yml/badge.svg) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
 
 ftools is a set of packages whose objective is to facilitate and improve the development speed of any modern frontend project.
