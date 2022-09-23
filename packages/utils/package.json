@@ -18,7 +18,11 @@
         ".": "./lib/index.js",
         "./currency": "./lib/currency.js",
         "./events": "./lib/events.js",
-        "./processing": "./lib/processing.js"
+        "./processing": "./lib/processing.js",
+        "./array": "./lib/array.js",
+        "./object": "./lib/object.js",
+        "./navigator": "./lib/navigator.js",
+        "./number": "./lib/number.js"
     },
     "typesVersions": {
         "*": {
@@ -30,6 +34,18 @@
             ],
             "processing": [
                 "./lib/types/processing.d.ts"
+            ],
+            "array": [
+                "./lib/types/array.d.ts"
+            ],
+            "object": [
+                "./lib/types/object.d.ts"
+            ],
+            "navigator": [
+                "./lib/types/navigator.d.ts"
+            ],
+            "number": [
+                "./lib/types/number.d.ts"
             ]
         }
     },
