@@ -1,3 +1,7 @@
 export * from './processing'
 export * from './events'
 export * from './currency'
+export * from './number'
+export * from './navigator'
+export * from './array'
+export * from './object'
