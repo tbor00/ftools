@@ -39,7 +39,7 @@
         "dev": "turbo run dev"
     },
     "devDependencies": {
-        "@babel/cli": "^7.18.10",
+        "@babel/cli": "^7.19.3",
         "@babel/core": "^7.10.4",
         "@babel/preset-env": "^7.19.3",
         "@babel/runtime": "^7.10.4",
