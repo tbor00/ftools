@@ -38,4 +38,28 @@ const removeAccents = (str) => {
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 }
 
-export { getQueryParamsWithProxy, fileSizeByteToMb, bytesConvert, removeAccents }
+/**
+ * If the type of the value is a function, return true, otherwise return false.
+ * @param {unknown} value - The value to check.
+ */
+const isFunction = (value) => typeof value === 'function'
+
+/**
+ * IsString returns true if the value is a string, otherwise it returns false.
+ * @param {unknown} value - The value to check
+ */
+const isString = (value) => typeof value === 'string'
+
+/**
+ * IsBoolean returns true if the value is a boolean, otherwise it returns false.
+ * @param {unknown} value - The value to check.
+ */
+const isBoolean = (value) => typeof value === 'boolean'
+
+/**
+ * If the value is undefined, return true, otherwise return false.
+ * @param {unknown} value - The value to check.
+ */
+const isUndef = (value) => typeof value === 'undefined'
+
+export { getQueryParamsWithProxy, fileSizeByteToMb, bytesConvert, removeAccents, isFunction, isString, isBoolean, isUndef }
