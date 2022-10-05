@@ -1,10 +1,18 @@
 # @ftools-suit/network
 
+## 1.2.4
+
+### Patch Changes
+
+-   4d1ad28: Fix:
+
+    add response.json on fetch methods
+
 ## 1.2.3
 
 ### Patch Changes
 
-- 71f665: Update README with basic information
+-   71f665: Update README with basic information
 
 ## 1.2.2
 
