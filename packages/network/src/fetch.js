@@ -28,4 +28,4 @@ const connection = {
     delete: deleteReq
 }
 
-export { get, post, put, patch, connection }
+export { get, post, put, patch, deleteReq, connection }

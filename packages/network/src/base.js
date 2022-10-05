@@ -52,7 +52,8 @@ const request = (method, url, body, options = {}, middleware) => {
     if (!middleware) {
         delete cleanConfig.url
         cleanConfig.body = JSON.stringify(body)
-        return fetch(url, cleanConfig)
+        const response = fetch(url, cleanConfig)
+        return response.json()
     }
 
     return middleware(cleanConfig)
