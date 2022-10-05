@@ -1,0 +1,36 @@
+{
+    "name": "@ftools-suit/hooks",
+    "version": "1.0.0",
+    "description": "",
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tbor00/ftools"
+    },
+    "author": "@tbor00",
+    "license": "MIT",
+    "homepage": "https://github.com/tbor00/ftools/tree/main/packages/hooks#readme",
+    "main": "lib/index.js",
+    "types": "lib/types/index.d.ts",
+    "files": [
+        "lib/*",
+        "README.md"
+    ],
+    "scripts": {
+        "lib": "tsc && babel ./src --out-dir ./lib"
+    },
+    "devDependencies": {
+        "react": "18.0.0",
+        "react-dom": "18.0.0"
+    },
+    "peerDependencies": {
+        "react": ">=17",
+        "react-dom": ">=17"
+    },
+    "babel": {
+        "extends": "../../babel.config.json",
+        "presets": [
+            "@babel/preset-react"
+        ]
+    }
+}
