@@ -34,7 +34,7 @@ const cleanConfigHttp = (source) => {
  * to allow for custom middleware to be used.
  * @returns A function that takes in a method, url, body, options, and middleware.
  */
-const request = async (method, url, body, options = {}, middleware) => {
+const request = (method, url, body, options = {}, middleware) => {
     const dirtyConfig = {
         method,
         url,
@@ -52,8 +52,7 @@ const request = async (method, url, body, options = {}, middleware) => {
     if (!middleware) {
         delete cleanConfig.url
         cleanConfig.body = JSON.stringify(body)
-        const response = await fetch(url, cleanConfig)
-        return response.json()
+        return fetch(url, cleanConfig)
     }
 
     return middleware(cleanConfig)
