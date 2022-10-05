@@ -4,9 +4,7 @@
 
 ### Patch Changes
 
--   4d1ad28: Fix:
-
-    add response.json on fetch methods
+-   4d1ad28: add response.json on fetch methods
 
 ## 1.2.3
 
