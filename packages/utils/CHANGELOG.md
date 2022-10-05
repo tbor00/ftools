@@ -1,5 +1,15 @@
 # @ftools-suit/utils
 
+## 1.1.3
+
+### Patch Changes
+
+-   2ca33c6: - Add testing
+    -   Currency helpers
+    -   Events helpers
+    -   Navigator helpers
+    -   Add more processing helpers
+
 ## 1.1.2
 
 ### Patch Changes
