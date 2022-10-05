@@ -1,4 +1,10 @@
 /**
+ * IsNumber returns true if the value is a number, otherwise it returns false.
+ * @param {unknown} value - The value to be checked
+ */
+export const isNumber = (value) => typeof value === 'number'
+
+/**
  * It returns true if the given number is a real number, otherwise it returns false
  * @param {number} num - number - This is the number that we're checking to see if it's a real number.
  * @returns {boolean} A function that takes a number as an argument and returns a boolean.
