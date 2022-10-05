@@ -17,7 +17,8 @@
         "README.md"
     ],
     "scripts": {
-        "lib": "tsc && babel ./src --out-dir ./lib"
+        "lib": "tsc && babel ./src --out-dir ./lib",
+        "format": "prettier --write ./src"
     },
     "devDependencies": {
         "react": "18.0.0",
