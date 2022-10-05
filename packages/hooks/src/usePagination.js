@@ -8,7 +8,7 @@ import React from 'react'
  * size, setSize, currentPage, goToPage, goToNextPage, goToPreviousPage, changePage,
  * blockPaginationWithCount
  */
-export function usePagination(opt = {}) {
+export default function usePagination(opt = {}) {
     const [size, setSize] = React.useState(5)
     const [currentPage, setCurrentPage] = React.useState(0)
 
