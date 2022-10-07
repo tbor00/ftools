@@ -1,23 +1,27 @@
-# @ftools-suit/hooks
+# @ftools-suit/autocomplete
 
-This is library of React hooks for common projects.
+This library focuses on giving google predictions and autocompletions
 
 ## Installation
 
 Using npm
 ```bash
-npm install @ftools-suit/hooks
+npm install @ftools-suit/autocomplete
 ```
 
 Using yarn
 ```bash
-yarn add @ftools-suit/hooks
+yarn add @ftools-suit/autocomplete
 ```
 
 ## How to imports?
 
 ```js
-import { usePagination } from '@ftools-suit/hooks'
+import { useAutoComplete, geoMappedAddress, getGeocode, getLatLng, getMappedAddress, getZipCode } from '@ftools-suit/autocomplete'
 
-const { usePagination } = require('@ftools-suit/hooks')
+const { useAutoComplete, geoMappedAddress, getGeocode, getLatLng, getMappedAddress, getZipCode } = require('@ftools-suit/autocomplete')
+
+// OR
+import useAutoComplete from '@ftools-suit/autocomplete/react'
+const useAutoComplete = require('@ftools-suit/autocomplete/react')
 ```
