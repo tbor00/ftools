@@ -16,6 +16,21 @@
         "lib/*",
         "README.md"
     ],
+    "exports": {
+        ".": "./lib/index.js",
+        "./react": "./lib/react.js",
+        "./geocode": "./lib/geocode.js"
+    },
+    "typesVersions": {
+        "*": {
+            "react": [
+                "./lib/types/react.d.ts"
+            ],
+            "geocode": [
+                "./lib/types/geocode.d.ts"
+            ]
+        }
+    },
     "scripts": {
         "lib": "tsc && babel ./src --out-dir ./lib",
         "format": "prettier --write ./src"
