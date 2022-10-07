@@ -9,7 +9,7 @@ import React from 'react'
  * blockPaginationWithCount
  */
 export default function usePagination(opt = {}) {
-    const [size, setSize] = React.useState(5)
+    const [size, setSize] = React.useState(opt?.initialSize ?? 5)
     const [currentPage, setCurrentPage] = React.useState(0)
 
     const changePage = React.useCallback((sum) => {
