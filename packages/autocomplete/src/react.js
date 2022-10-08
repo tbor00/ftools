@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { gmapsApiIsLoaded } from './helps'
 
 export default function (props) {
     const { place: defaultPlace, initialShouldPrediction = false, isLoading: defaultIsLoading, status: defaultStatus, data: defaultData } = props.defaults
@@ -13,11 +14,10 @@ export default function (props) {
 
     const initMap = useCallback(() => {
         if (autocompleteRef.current) return
-        const libPlaces = google?.maps?.places
-        if (!libPlaces) {
-            console.error('Google maps places api is not loaded')
+        if (!gmapsApiIsLoaded(true)) {
             return
         }
+        const libPlaces = google?.maps?.places
         autocompleteRef.current = new libPlaces.AutocompleteService()
     }, [])
 

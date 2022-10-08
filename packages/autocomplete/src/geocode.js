@@ -1,4 +1,10 @@
+import { gmapsApiIsLoaded } from './helps'
+
 export const getGeocode = (args) => {
+    if (!gmapsApiIsLoaded()) {
+        return
+    }
+
     const geocoder = new window.google.maps.Geocoder()
 
     return new Promise((resolve, reject) => {
