@@ -12,4 +12,6 @@ ftools is a set of packages whose objective is to facilitate and improve the dev
 | -- | -- |
 | [@ftools-suit/network](./packages/network) | tools/methods/helpers for making http requests |
 | [@ftools-suit/utils](./packages/utils) | helpers for making any web app |
+| [@ftools-suit/hooks](./packages/hooks) | Reusable and modern hooks for React projects |
+| [@ftools-suit/autocomplete](./packages/autocomplete) | autocomplete and geocoding functions/hooks of google maps |
 
