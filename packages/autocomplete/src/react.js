@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { gmapsApiIsLoaded, miniDebounce } from './helps'
 
-export default function ({ debounce = 300, defaults = {} }) {
+export default function ({ debounce = 300, defaults = {}, requestOptions = {} }) {
     const { place: defaultPlace, shouldPrediction: defaultShouldPrediction, isLoading: defaultIsLoading, status: defaultStatus, data: defaultData } = defaults
 
     const autocompleteRef = useRef()
@@ -33,11 +33,11 @@ export default function ({ debounce = 300, defaults = {} }) {
                 return
             }
             setPredictions((prevPredictions) => ({ ...prevPredictions, isLoading: true }))
-            autocompleteRef.current.getPlacePredictions({ input: place }, (data, status) => {
+            autocompleteRef.current.getPlacePredictions({ ...requestOptions, input: place }, (data, status) => {
                 setPredictions((prevPredictions) => ({ ...prevPredictions, isLoading: false, status: status, data: data ?? [] }))
             })
         }, debounce),
-        [clearPredictions, debounce]
+        [clearPredictions, debounce, requestOptions]
     )
 
     /* A callback function that is used to set the place value and get predictions. */
