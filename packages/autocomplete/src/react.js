@@ -1,15 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { gmapsApiIsLoaded, miniDebounce } from './helps'
 
-export default function (props) {
-    const { debounce = 300 } = props
-    const {
-        place: defaultPlace,
-        shouldPrediction: defaultShouldPrediction,
-        isLoading: defaultIsLoading,
-        status: defaultStatus,
-        data: defaultData
-    } = props.defaults
+export default function ({ debounce = 300, defaults = {} }) {
+    const { place: defaultPlace, shouldPrediction: defaultShouldPrediction, isLoading: defaultIsLoading, status: defaultStatus, data: defaultData } = defaults
 
     const autocompleteRef = useRef()
     const [place, setPlaceText] = useState('')
