@@ -47,6 +47,39 @@ export const getZipCode = (result, shortName = false) => {
     return shortName ? foundZip.short_name : foundZip.long_name
 }
 
+// Enum of Gmaps address_components
+export const AddressComponent = {
+    STREET: 'street',
+    STREET_NUMBER: 'street_number',
+    ROUTE: 'route',
+    NEIGHBORHOOD: 'neighborhood',
+    LOCALITY: 'locality',
+    SUB_LOCALITY: 'sublocality',
+    ADMINISTRATIVE_AREA_LEVEL_1: 'administrative_area_level_1',
+    ADMINISTRATIVE_AREA_LEVEL_2: 'administrative_area_level_2',
+    POSTAL_CODE: 'postal_code',
+    COUNTRY: 'country'
+}
+
+/**
+ * It takes a Google Maps API result, an address component, and a boolean, and returns the short or
+ * long name of the address component
+ * @param result - The result object returned from the Google Maps API.
+ * @param addressComponent - The type of address component you want to get. For example, if you want to
+ * get the city, you would pass in 'locality'
+ * @param shortName - If true, the short name of the address component is returned. If false, the long
+ * name is returned.
+ * @returns the short_name or long_name of the address component that is passed in.
+ */
+export const getAddressComponent = (result, addressComponent, shortName) => {
+    const foundAddressComponent = result.address_components.find(({ types }) => {
+        types.includes(addressComponent)
+    })
+
+    if (!foundAddressComponent) return undefined
+    return shortName ? foundAddressComponent.short_name : foundAddressComponent.long_name
+}
+
 /**
  * It takes a Google Maps API response and returns an object with the address information
  * @param results - The results from the Google Maps API.
@@ -62,17 +95,17 @@ export const getMappedAddress = (results, latLang, shortName = false) => {
         obj[propertieName] = useShortName ? infoAddress.short_name : infoAddress.long_name
     }
     results.address_components.forEach((info) => {
-        if (info.types.includes('route')) {
+        if (info.types.includes(AddressComponent.ROUTE)) {
             setItem('street', info, shortName)
-        } else if (info.types.includes('postal_code')) {
+        } else if (info.types.includes(AddressComponent.POSTAL_CODE)) {
             setItem('postal_code', info, shortName)
-        } else if (info.types.includes('sublocality') || info.types.includes('neighborhood')) {
+        } else if (info.types.includes(AddressComponent.SUB_LOCALITY) || info.types.includes(AddressComponent.NEIGHBORHOOD)) {
             setItem('neighborhood', info, shortName)
-        } else if (info.types.includes('administrative_area_level_1')) {
+        } else if (info.types.includes(AddressComponent.ADMINISTRATIVE_AREA_LEVEL_1)) {
             setItem('state', info, shortName)
-        } else if (info.types.includes('locality')) {
+        } else if (info.types.includes(AddressComponent.LOCALITY)) {
             setItem('municipality', info, shortName)
-        } else if (info.types.includes('street_number')) {
+        } else if (info.types.includes(AddressComponent.STREET_NUMBER)) {
             setItem('street_number', info, shortName)
         }
     })
