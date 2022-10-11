@@ -1,8 +1,15 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { gmapsApiIsLoaded } from './helps'
+import { gmapsApiIsLoaded, miniDebounce } from './helps'
 
 export default function (props) {
-    const { place: defaultPlace, initialShouldPrediction = false, isLoading: defaultIsLoading, status: defaultStatus, data: defaultData } = props.defaults
+    const { debounce = 300 } = props
+    const {
+        place: defaultPlace,
+        shouldPrediction: defaultShouldPrediction,
+        isLoading: defaultIsLoading,
+        status: defaultStatus,
+        data: defaultData
+    } = props.defaults
 
     const autocompleteRef = useRef()
     const [place, setPlaceText] = useState('')
@@ -26,21 +33,21 @@ export default function (props) {
         setPredictions({ isLoading: defaultIsLoading ?? false, status: defaultStatus ?? '', data: defaultData ?? [] })
     }, [defaultIsLoading, defaultStatus, defaultData])
 
-    const getPredictions = useCallback((place) => {
-        if (!place) {
-            clearPredictions()
-            return
-        }
-        setPredictions((prevPredictions) => ({ ...prevPredictions, isLoading: true }))
-        autocompleteRef.current.getPlacePredictions({ input: place }, (data, status) => {
-            setPredictions((prevPredictions) => ({ ...prevPredictions, isLoading: false, status: status, data: data ?? [] }))
-        })
-    }, [])
+    const getPredictions = useCallback(
+        miniDebounce((place) => {
+            if (!place) {
+                clearPredictions()
+                return
+            }
+            setPredictions((prevPredictions) => ({ ...prevPredictions, isLoading: true }))
+            autocompleteRef.current.getPlacePredictions({ input: place }, (data, status) => {
+                setPredictions((prevPredictions) => ({ ...prevPredictions, isLoading: false, status: status, data: data ?? [] }))
+            })
+        }, debounce),
+        [clearPredictions, debounce]
+    )
 
-    /**  A callback function that is used to set the place value and get predictions.
-     * @param {string} placeValue - name of the place to search
-     * @param {boolean} shouldPredictions -
-     */
+    /* A callback function that is used to set the place value and get predictions. */
     const setPlace = useCallback(
         (placeValue, shouldPredictions = true) => {
             setPlaceText(placeValue)
@@ -49,13 +56,17 @@ export default function (props) {
         [getPredictions]
     )
 
+    const getAutoCompleteRef = useCallback(() => {
+        return autocompleteRef.current
+    }, [autocompleteRef])
+
     useEffect(() => {
         initMap()
     }, [])
 
     useEffect(() => {
-        defaultPlace && setPlace(defaultPlace, initialShouldPrediction)
+        defaultPlace && setPlace(defaultPlace, defaultShouldPrediction)
     }, [defaultPlace])
 
-    return { place, predictions, setPlace, clearPredictions }
+    return { place, predictions, setPlace, clearPredictions, getAutoCompleteRef }
 }
