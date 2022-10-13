@@ -4,7 +4,7 @@ const ERROR_MESSAGE = {
         'google maps api places is not loaded, for more information visit: https://developers.google.com/maps/documentation/javascript/get-api-key'
 }
 
-export const miniDebounce = (callback, wait) => {
+export const miniDebounce = (callback: (...args) => void, wait: number) => {
     let timerId
     return (...args) => {
         clearTimeout(timerId)
@@ -14,7 +14,7 @@ export const miniDebounce = (callback, wait) => {
     }
 }
 
-export const gmapsApiIsLoaded = (includePlaces = false) => {
+export const gmapsApiIsLoaded = (includePlaces: boolean = false) => {
     if (includePlaces && !window?.google?.maps.places) {
         console.error(ERROR_MESSAGE.PLACES_NOT_LOADED)
         return false
