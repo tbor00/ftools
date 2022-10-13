@@ -1,9 +1,15 @@
 {
     "compilerOptions": {
+        "jsx": "react-jsx",
+        "module": "esnext",
+        "target": "ESNext",
         "allowJs": true,
         "declaration": true,
         "emitDeclarationOnly": true,
-        "declarationMap": true
+        "declarationMap": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "skipLibCheck": true
     },
     "exclude": ["lib/**/*", "node_modules", "tests/**/*"]
 }

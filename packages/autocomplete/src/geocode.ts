@@ -1,17 +1,16 @@
 import { gmapsApiIsLoaded } from './helps'
+import { GeoCoderResult, MappedAddress } from './types'
 
-export const getGeocode = (args) => {
+export const getGeocode = (args: google.maps.GeocoderRequest): Promise<GeoCoderResult[] | null> => {
     if (!gmapsApiIsLoaded()) {
         return
     }
 
-    const geocoder = new window.google.maps.Geocoder()
-
+    const geocoder = new google.maps.Geocoder()
     return new Promise((resolve, reject) => {
         geocoder.geocode(args, (results, status) => {
             if (status !== 'OK') reject(status)
             if (!args.address && args.componentRestrictions) {
-                console.error(geocodeErr)
                 resolve(results)
             }
             resolve(results)
@@ -24,7 +23,7 @@ export const getGeocode = (args) => {
  * @param result - The result object returned from the Google Maps API.
  * @returns An object with a lat and lng property.
  */
-export const getLatLng = (result) => {
+export const getLatLng = (result: GeoCoderResult) => {
     const { lat, lng } = result.geometry.location
     return { lat: lat(), lng: lng() }
 }
@@ -39,7 +38,7 @@ export const getLatLng = (result) => {
  * long name of the zip code.
  * @returns the short_name or long_name of the postal_code.
  */
-export const getZipCode = (result, shortName = false) => {
+export const getZipCode = (result: GeoCoderResult, shortName: boolean = false) => {
     const foundZip = result.address_components.find(({ types }) => types.includes('postal_code'))
 
     if (!foundZip) return undefined
@@ -71,7 +70,7 @@ export const AddressComponent = {
  * name is returned.
  * @returns the short_name or long_name of the address component that is passed in.
  */
-export const getAddressComponent = (result, addressComponent, shortName) => {
+export const getAddressComponent = (result: GeoCoderResult, addressComponent, shortName: boolean) => {
     const foundAddressComponent = result.address_components.find(({ types }) => {
         types.includes(addressComponent)
     })
@@ -89,8 +88,9 @@ export const getAddressComponent = (result, addressComponent, shortName) => {
  * @returns An object with the following properties:
  * street, postal_code, neighborhood, state, municipality, number, no_ext, ext, int, no_int, address
  */
-export const getMappedAddress = (results, latLang, shortName = false) => {
-    const obj = { lng: latLang.lng, lat: latLang.lat }
+export const getMappedAddress = (results: GeoCoderResult, latLang: { lng: number; lat: number }, shortName: boolean = false) => {
+    const obj: Partial<MappedAddress> = { lng: latLang.lng, lat: latLang.lat }
+
     const setItem = (propertieName, infoAddress, useShortName) => {
         obj[propertieName] = useShortName ? infoAddress.short_name : infoAddress.long_name
     }
@@ -116,9 +116,9 @@ export const getMappedAddress = (results, latLang, shortName = false) => {
         state: obj.state,
         municipality: obj.municipality,
         number: obj.number,
-        no_ext: obj.number,
-        ext: obj.number,
-        int: null,
+        no_ext: obj.no_ext,
+        ext: obj.ext,
+        int: obj.no_int || null,
         no_int: null,
         address: obj
     }
@@ -130,7 +130,7 @@ export const getMappedAddress = (results, latLang, shortName = false) => {
  * @param {string} placeId - The placeId of the location you want to get the address for.
  * @returns A function that takes a placeId and returns a promise that resolves to an object with the
  */
-export const geoMappedAddress = async (placeId) => {
+export const geoMappedAddress = async (placeId: string) => {
     const results = await getGeocode({ placeId: placeId })
     const { lat, lng } = getLatLng(results[0])
     return getMappedAddress(results[0], { lat, lng })
