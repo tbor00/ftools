@@ -43,6 +43,11 @@
     "peerDependencies": {
         "react": ">=17"
     },
+    "peerDependenciesMeta": {
+        "react": {
+            "optional": true
+        }
+    },
     "babel": {
         "extends": "../../babel.config.json",
         "presets": [
