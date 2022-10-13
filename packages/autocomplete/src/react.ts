@@ -30,7 +30,7 @@ export interface useAutoCompleteReturn {
     getAutoCompleteRef(): AutocompleteService | undefined
 }
 
-export default function ({ debounce = 300, defaults, requestOptions }: useAutocompleteArgs): useAutoCompleteReturn {
+export default function ({ debounce = 300, defaults = {}, requestOptions = {} }: useAutocompleteArgs = {}): useAutoCompleteReturn {
     const {
         place: defaultPlace,
         shouldPrediction: defaultShouldPrediction,
