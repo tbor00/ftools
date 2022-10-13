@@ -11,7 +11,7 @@
     "license": "MIT",
     "homepage": "https://github.com/tbor00/ftools/tree/main/packages/autocomplete#readme",
     "main": "lib/index.js",
-    "types": "lib/types/index.d.ts",
+    "types": "lib/index.d.ts",
     "files": [
         "lib/*",
         "README.md"
@@ -24,10 +24,10 @@
     "typesVersions": {
         "*": {
             "react": [
-                "./lib/types/react.d.ts"
+                "./lib/react.d.ts"
             ],
             "geocode": [
-                "./lib/types/geocode.d.ts"
+                "./lib/geocode.d.ts"
             ]
         }
     },
