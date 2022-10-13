@@ -32,7 +32,7 @@
         }
     },
     "scripts": {
-        "lib": "tsc && babel ./src --out-dir ./lib",
+        "lib": "tsc && babel ./src --out-dir ./lib --extensions '.ts'",
         "format": "prettier --write ./src"
     },
     "devDependencies": {
