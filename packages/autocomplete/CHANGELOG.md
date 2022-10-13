@@ -1,5 +1,11 @@
 # @ftools-suit/autocomplete
 
+## 2.0.0
+
+### Major Changes
+
+-   bc5636f: Migrate JS to TS
+
 ## 1.0.3
 
 ### Patch Changes
