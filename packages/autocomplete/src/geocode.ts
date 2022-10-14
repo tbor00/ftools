@@ -1,5 +1,13 @@
 import { gmapsApiIsLoaded } from './helps'
-import { GeoCoderResult, MappedAddress } from './types'
+import { GeoCoderResult, MappedAddress, PlaceDetailsReq, PlaceResult } from './types'
+
+const placesServiceInstance = () => {
+    if (!gmapsApiIsLoaded(true)) {
+        return null
+    }
+
+    return new google.maps.places.PlacesService(document.createElement('div'))
+}
 
 export const getGeocode = (args: google.maps.GeocoderRequest): Promise<GeoCoderResult[] | null> => {
     if (!gmapsApiIsLoaded()) {
@@ -15,6 +23,23 @@ export const getGeocode = (args: google.maps.GeocoderRequest): Promise<GeoCoderR
             }
             resolve(results)
         })
+    })
+}
+
+/**
+ * It takes a `PlaceDetailsReq` object as an argument, and returns a `Promise` that resolves to a
+ * `PlaceResult` object
+ * @param {PlaceDetailsReq} args - PlaceDetailsReq
+ * @returns A promise that resolves to a PlaceResult
+ */
+export const getDetails = (args: PlaceDetailsReq): Promise<PlaceResult> => {
+    if (!args.placeId) {
+        console.error('Ups, placeId was not provided')
+        return Promise.reject('placeId was not provided')
+    }
+    placesServiceInstance()?.getDetails(args, (results, status) => {
+        if (status !== 'OK') return Promise.reject(status)
+        return Promise.resolve(results)
     })
 }
 
