@@ -1,5 +1,5 @@
 import { gmapsApiIsLoaded } from './helps'
-import { GeoCoderResult, MappedAddress, PlaceDetailsReq, PlaceResult } from './types'
+import { GeoCoderResult, MappedAddress, PlaceDetailsReq, PlaceResult, PlaceFromQuery, PlacesServiceStatus } from './types'
 
 const placesServiceInstance = () => {
     if (!gmapsApiIsLoaded(true)) {
@@ -37,7 +37,23 @@ export const getDetails = (args: PlaceDetailsReq): Promise<PlaceResult> => {
         console.error('Ups, placeId was not provided')
         return Promise.reject('placeId was not provided')
     }
-    placesServiceInstance()?.getDetails(args, (results, status) => {
+    placesServiceInstance()?.getDetails(args, (results: PlaceResult, status: PlacesServiceStatus) => {
+        if (status !== 'OK') return Promise.reject(status)
+        return Promise.resolve(results)
+    })
+}
+
+/**
+ * `findPlaceFromQuery` takes an object with a `query` property and a `fields` property, and returns a
+ * Promise that resolves to an array of `PlaceResult` objects
+ * @param {PlaceFromQuery} args - PlaceFromQuery
+ */
+export const findPlaceFromQuery = (args: PlaceFromQuery): Promise<PlaceResult[] | null> => {
+    if (!args.fields || args.query) {
+        console.error('fields or query was not provided')
+        return Promise.reject('missing arguments')
+    }
+    placesServiceInstance()?.findPlaceFromQuery(args, (results: PlaceResult[], status: PlacesServiceStatus) => {
         if (status !== 'OK') return Promise.reject(status)
         return Promise.resolve(results)
     })
