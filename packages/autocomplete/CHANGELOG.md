@@ -1,5 +1,11 @@
 # @ftools-suit/autocomplete
 
+## 2.0.1
+
+### Patch Changes
+
+-   2ba0942: setPlace 2nd argument was fixed
+
 ## 2.0.0
 
 ### Major Changes
