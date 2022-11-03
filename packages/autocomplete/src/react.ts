@@ -25,7 +25,7 @@ export interface useAutocompleteArgs {
 export interface useAutoCompleteReturn {
     place: string
     predictions: Predictions
-    setPlace(place: string, shouldPredictions: true): void
+    setPlace(place: string, shouldPredictions?: boolean): void
     clearPredictions(): void
     getAutoCompleteRef(): AutocompleteService | undefined
 }
