@@ -36,7 +36,7 @@ const cleanConfigHttp = (source) => {
  */
 const request = (method, url, body, options = {}, middleware) => {
     if (!method || !url) {
-        throw new TypeError('Ups, there are parameters that are required!')
+        throw new Error('Ups, there are parameters that are required!')
     }
 
     const cleanConfig = cleanConfigHttp({
