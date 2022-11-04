@@ -35,7 +35,11 @@ const cleanConfigHttp = (source) => {
  * @returns A function that takes in a method, url, body, options, and middleware.
  */
 const request = (method, url, body, options = {}, middleware) => {
-    const dirtyConfig = {
+    if (!method || !url) {
+        throw new TypeError('Ups, there are parameters that are required!')
+    }
+
+    const cleanConfig = cleanConfigHttp({
         method,
         url,
         data: body,
@@ -45,9 +49,7 @@ const request = (method, url, body, options = {}, middleware) => {
         responseType: options?.responseType,
         signal: options?.signal,
         timeout: 0
-    }
-
-    const cleanConfig = cleanConfigHttp(dirtyConfig)
+    })
 
     if (!middleware) {
         delete cleanConfig.url
