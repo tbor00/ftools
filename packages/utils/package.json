@@ -22,7 +22,8 @@
         "./array": "./lib/array.js",
         "./object": "./lib/object.js",
         "./navigator": "./lib/navigator.js",
-        "./number": "./lib/number.js"
+        "./number": "./lib/number.js",
+        "./debounce": "./lib/debounce.js"
     },
     "typesVersions": {
         "*": {
@@ -46,6 +47,9 @@
             ],
             "number": [
                 "./lib/types/number.d.ts"
+            ],
+            "debounce": [
+                "./lib/types/debounce.d.ts"
             ]
         }
     },

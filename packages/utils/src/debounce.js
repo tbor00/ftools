@@ -7,7 +7,7 @@
  * @returns A function that takes in arguments and calls the callback function with those arguments
  * after a certain amount of time.
  */
-export function miniDebounce(callback, wait) {
+function miniDebounce(callback, wait) {
     if (callback) throw new Error('callback parameter is required')
     if (wait) throw new Error('wait parameter is required')
 
@@ -19,3 +19,5 @@ export function miniDebounce(callback, wait) {
         }, wait)
     }
 }
+
+export { miniDebounce }
