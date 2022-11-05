@@ -2,17 +2,12 @@ import { gmapsApiIsLoaded } from './helps'
 import { GeoCoderResult, MappedAddress, PlaceDetailsReq, PlaceResult, PlaceFromQuery, PlacesServiceStatus } from './types'
 
 const placesServiceInstance = () => {
-    if (!gmapsApiIsLoaded(true)) {
-        return null
-    }
-
+    if (!gmapsApiIsLoaded(true)) return null
     return new google.maps.places.PlacesService(document.createElement('div'))
 }
 
 export const getGeocode = (args: google.maps.GeocoderRequest): Promise<GeoCoderResult[] | null> => {
-    if (!gmapsApiIsLoaded()) {
-        return
-    }
+    if (!gmapsApiIsLoaded()) return
 
     const geocoder = new google.maps.Geocoder()
     return new Promise((resolve, reject) => {
