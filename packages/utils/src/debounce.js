@@ -8,8 +8,8 @@
  * after a certain amount of time.
  */
 function miniDebounce(callback, wait) {
-    if (callback) throw new Error('callback parameter is required')
-    if (wait) throw new Error('wait parameter is required')
+    if (!callback) throw new Error('callback parameter is required')
+    if (!wait) throw new Error('wait parameter is required')
 
     let timerId
     return (...args) => {
