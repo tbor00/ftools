@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { AutocompletePredictions, AutocompleteService, PlacesServiceStatus } from './types'
-import { gmapsApiIsLoaded, miniDebounce } from './helps'
+
+import { miniDebounce } from '@ftools-suit/utils/debounce'
+import { gmapsApiIsLoaded } from './helps'
 
 export type defaultsTypes = {
     place?: string
