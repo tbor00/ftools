@@ -16,4 +16,13 @@ const getDeviceInformation = async () => {
     return navigator.connection()
 }
 
-export { copyToClipBoard, getDeviceInformation }
+/**
+ * It returns a promise that resolves to the battery object
+ * @returns A promise
+ */
+const getBattery = async () => {
+    const battery = await navigator.getBattery()
+    return battery
+}
+
+export { copyToClipBoard, getDeviceInformation, getBattery }
