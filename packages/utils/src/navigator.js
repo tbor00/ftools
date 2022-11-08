@@ -25,4 +25,14 @@ const getBattery = async () => {
     return battery
 }
 
-export { copyToClipBoard, getDeviceInformation, getBattery }
+/**
+ * If the navigator object is undefined or the userAgent property is not a string, return an empty
+ * string, otherwise return the userAgent property.
+ * @returns The user agent string of the browser.
+ */
+const getUserAgent = () => {
+    if (typeof navigator === 'undefined' && typeof navigator['userAgent'] !== 'string') return ''
+    return navigator['userAgent']
+}
+
+export { copyToClipBoard, getDeviceInformation, getBattery, getUserAgent }
