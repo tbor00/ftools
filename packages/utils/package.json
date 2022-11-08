@@ -23,7 +23,8 @@
         "./object": "./lib/object.js",
         "./navigator": "./lib/navigator.js",
         "./number": "./lib/number.js",
-        "./debounce": "./lib/debounce.js"
+        "./debounce": "./lib/debounce.js",
+        "./enviroment": "./lib/enviroment.js"
     },
     "typesVersions": {
         "*": {
@@ -50,6 +51,9 @@
             ],
             "debounce": [
                 "./lib/types/debounce.d.ts"
+            ],
+            "enviroment": [
+                "./lib/types/enviroment.d.ts"
             ]
         }
     },
