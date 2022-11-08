@@ -54,5 +54,8 @@
             "@babel/preset-react",
             "@babel/preset-typescript"
         ]
+    },
+    "dependencies": {
+        "@ftools-suit/utils": "^1.1.3"
     }
 }
