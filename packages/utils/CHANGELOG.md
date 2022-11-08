@@ -1,5 +1,11 @@
 # @ftools-suit/utils
 
+## 1.1.4
+
+### Patch Changes
+
+-   56a2aed: Enviroment helpers was added to utils
+
 ## 1.1.3
 
 ### Patch Changes
