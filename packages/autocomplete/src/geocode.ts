@@ -135,7 +135,7 @@ export const getAddressComponent = (result: GeoCoderResult, addressComponent, sh
  * street, postal_code, neighborhood, state, municipality, number, no_ext, ext, int, no_int, address
  */
 export const getMappedAddress = (geoResult: GeoCoderResult, latLang: GeoLocation, shortName: boolean = false) => {
-    const obj: Partial<AddressComponents> = { lng: latLang.lng, lat: latLang.lat, fullAddress: geoResult.formatted_address, geometry: geoResult.geometry }
+    const obj = { lng: latLang.lng, lat: latLang.lat, fullAddress: geoResult.formatted_address, geometry: geoResult.geometry }
 
     const setItem = (propertieName, infoAddress, useShortName) => {
         obj[propertieName] = useShortName ? infoAddress.short_name : infoAddress.long_name
@@ -177,7 +177,7 @@ export const getMappedAddress = (geoResult: GeoCoderResult, latLang: GeoLocation
         }
     })
 
-    return obj
+    return obj as AddressComponents
 }
 
 /**
