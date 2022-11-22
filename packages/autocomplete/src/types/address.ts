@@ -1,16 +1,28 @@
-export interface AddressComponents {
+import { GeoCoderGeometry } from './gmaps'
+export interface GeoLocation {
+    lat: number
+    lng: number
+}
+
+export interface AddressComponents extends GeoLocation {
+    country: string
     street: string
-    postal_code: string
+    zipCode: string
     neighborhood: string
     state: string
     municipality: string
-    number: string
-    no_ext: string
-    ext: string
-    int: string
-    no_int: string
-    lng: number
-    lat: number
+    streetNumber: string
+    fullAddress: string
+    geometry: GeoCoderGeometry
+    intersection?: any
+    plusCode?: string
+    premise?: any
+    subpremise?: any
+    parking?: number
+    landmark?: any
+    pointInterest?: any
+    floor?: number
+    room?: any
 }
 
 export interface MappedAddress extends AddressComponents {

@@ -1,12 +1,12 @@
 import { gmapsApiIsLoaded } from './helps'
-import { GeoCoderResult, MappedAddress, PlaceDetailsReq, PlaceResult, PlaceFromQuery, PlacesServiceStatus } from './types'
+import { GeoCoderReq, GeoCoderResult, AddressComponents, PlaceDetailsReq, PlaceResult, PlaceFromQuery, PlacesServiceStatus, GeoLocation } from './types'
 
 const placesServiceInstance = () => {
     if (!gmapsApiIsLoaded(true)) return null
     return new google.maps.places.PlacesService(document.createElement('div'))
 }
 
-export const getGeocode = (args: google.maps.GeocoderRequest): Promise<GeoCoderResult[] | null> => {
+export const getGeocode = (args: GeoCoderReq): Promise<GeoCoderResult[] | null> => {
     if (!gmapsApiIsLoaded()) return
 
     const geocoder = new google.maps.Geocoder()
@@ -84,6 +84,7 @@ export const getZipCode = (result: GeoCoderResult, shortName: boolean = false) =
 
 // Enum of Gmaps address_components
 export const AddressComponent = {
+    STREET_ADDRESS: 'street_address',
     STREET: 'street',
     STREET_NUMBER: 'street_number',
     ROUTE: 'route',
@@ -93,7 +94,16 @@ export const AddressComponent = {
     ADMINISTRATIVE_AREA_LEVEL_1: 'administrative_area_level_1',
     ADMINISTRATIVE_AREA_LEVEL_2: 'administrative_area_level_2',
     POSTAL_CODE: 'postal_code',
-    COUNTRY: 'country'
+    INTERSECTION: 'intersection',
+    COUNTRY: 'country',
+    PLUS_CODE: 'plus_code',
+    PREMISE: 'premise',
+    SUBPREMISE: 'subpremise',
+    PARKING: 'parking',
+    LANDMARK: 'landmark',
+    FLOOR: 'floor',
+    POINT_INTEREST: 'point_of_interest',
+    ROOM: 'room'
 }
 
 /**
@@ -117,24 +127,25 @@ export const getAddressComponent = (result: GeoCoderResult, addressComponent, sh
 
 /**
  * It takes a Google Maps API response and returns an object with the address information
- * @param results - The results from the Google Maps API.
- * @param {{lat: number, lng: number}} latLang - The latitude and longitude of the address.
+ * @param geoResult - The results from the Google Maps API.
+ * @param {GeoLocation} latLang - The latitude and longitude of the address.
  * @param {boolean} [shortName=false] - If true, the short name of the address component is returned. For
  * example, 'CA' instead of 'California'.
  * @returns An object with the following properties:
  * street, postal_code, neighborhood, state, municipality, number, no_ext, ext, int, no_int, address
  */
-export const getMappedAddress = (results: GeoCoderResult, latLang: { lng: number; lat: number }, shortName: boolean = false) => {
-    const obj: Partial<MappedAddress> = { lng: latLang.lng, lat: latLang.lat }
+export const getMappedAddress = (geoResult: GeoCoderResult, latLang: GeoLocation, shortName: boolean = false) => {
+    const obj = { lng: latLang.lng, lat: latLang.lat, fullAddress: geoResult.formatted_address, geometry: geoResult.geometry }
 
     const setItem = (propertieName, infoAddress, useShortName) => {
         obj[propertieName] = useShortName ? infoAddress.short_name : infoAddress.long_name
     }
-    results.address_components.forEach((info) => {
+
+    geoResult.address_components.forEach((info) => {
         if (info.types.includes(AddressComponent.ROUTE)) {
             setItem('street', info, shortName)
         } else if (info.types.includes(AddressComponent.POSTAL_CODE)) {
-            setItem('postal_code', info, shortName)
+            setItem('zipCode', info, shortName)
         } else if (info.types.includes(AddressComponent.SUB_LOCALITY) || info.types.includes(AddressComponent.NEIGHBORHOOD)) {
             setItem('neighborhood', info, shortName)
         } else if (info.types.includes(AddressComponent.ADMINISTRATIVE_AREA_LEVEL_1)) {
@@ -142,26 +153,35 @@ export const getMappedAddress = (results: GeoCoderResult, latLang: { lng: number
         } else if (info.types.includes(AddressComponent.LOCALITY)) {
             setItem('municipality', info, shortName)
         } else if (info.types.includes(AddressComponent.STREET_NUMBER)) {
-            setItem('street_number', info, shortName)
+            setItem('streetNumber', info, shortName)
+        } else if (info.types.includes(AddressComponent.COUNTRY)) {
+            setItem('country', info, shortName)
+        } else if (info.types.includes(AddressComponent.PLUS_CODE)) {
+            setItem('plusCode', info, shortName)
+        } else if (info.types.includes(AddressComponent.PREMISE)) {
+            setItem('premise', info, shortName)
+        } else if (info.types.includes(AddressComponent.SUBPREMISE)) {
+            setItem('subpremise', info, shortName)
+        } else if (info.types.includes(AddressComponent.PARKING)) {
+            setItem('parking', info, shortName)
+        } else if (info.types.includes(AddressComponent.LANDMARK)) {
+            setItem('landmark', info, shortName)
+        } else if (info.types.includes(AddressComponent.FLOOR)) {
+            setItem('floor', info, shortName)
+        } else if (info.types.includes(AddressComponent.POINT_INTEREST)) {
+            setItem('pointInterest', info, shortName)
+        } else if (info.types.includes(AddressComponent.ROOM)) {
+            setItem('room', info, shortName)
+        } else if (info.types.includes(AddressComponent.INTERSECTION)) {
+            setItem('intersection', info, shortName)
         }
     })
-    return {
-        street: obj.street,
-        postal_code: obj.postal_code,
-        neighborhood: obj.neighborhood,
-        state: obj.state,
-        municipality: obj.municipality,
-        number: obj.number,
-        no_ext: obj.no_ext,
-        ext: obj.ext,
-        int: obj.no_int || null,
-        no_int: null,
-        address: obj
-    }
+
+    return obj as AddressComponents
 }
 
 /**
- * It takes a placeId, gets the geocode results, gets the lat and lng from the geocode results, and
+ * It takes a placeId, gets the geocode geoResult, gets the lat and lng from the geocode results, and
  * then returns the mapped address
  * @param {string} placeId - The placeId of the location you want to get the address for.
  * @returns A function that takes a placeId and returns a promise that resolves to an object with the

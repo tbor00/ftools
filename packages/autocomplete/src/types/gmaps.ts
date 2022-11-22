@@ -1,6 +1,8 @@
 // GeoCoder types
 export type GeoCoderRequest = google.maps.GeocoderRequest
 export type GeoCoderResult = google.maps.GeocoderResult
+export type GeoCoderReq = google.maps.GeocoderRequest
+export type GeoCoderGeometry = google.maps.GeocoderGeometry
 
 // Places types
 export type AutocompletePredictions = google.maps.places.AutocompletePrediction
