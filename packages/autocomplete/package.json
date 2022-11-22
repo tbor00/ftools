@@ -19,7 +19,10 @@
     "exports": {
         ".": "./lib/index.js",
         "./react": "./lib/react.js",
-        "./geocode": "./lib/geocode.js"
+        "./geocode": "./lib/geocode.js",
+        "./types": "./lib/types/index.js",
+        "./types/gmaps": "./lib/types/gmaps.js",
+        "./types/address": "./lib/types/address.js"
     },
     "typesVersions": {
         "*": {
@@ -28,6 +31,15 @@
             ],
             "geocode": [
                 "./lib/geocode.d.ts"
+            ],
+            "types": [
+                "./lib/types/index.d.ts"
+            ],
+            "types/gmaps": [
+                "./lib/types/gmaps.d.ts"
+            ],
+            "types/address": [
+                "./lib/types/address.d.ts"
             ]
         }
     },
