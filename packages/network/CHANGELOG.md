@@ -1,5 +1,11 @@
 # @ftools-suit/network
 
+## 1.2.5
+
+### Patch Changes
+
+-   83e65aa: Downgrade axios version
+
 ## 1.2.4
 
 ### Patch Changes
