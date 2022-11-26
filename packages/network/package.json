@@ -1,6 +1,6 @@
 {
     "name": "@ftools-suit/network",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "description": "This is a repo for the Http request and methods",
     "main": "lib/index.js",
     "types": "lib/types/index.d.ts",
