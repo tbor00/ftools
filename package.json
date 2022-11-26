@@ -36,7 +36,8 @@
         "lib": "turbo run lib",
         "format": "turbo run format",
         "test": "turbo run test",
-        "dev": "turbo run dev"
+        "dev": "turbo run dev",
+        "clean": "rm -rf node_modules package-lock.json"
     },
     "devDependencies": {
         "@babel/cli": "^7.19.3",
