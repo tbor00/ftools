@@ -69,6 +69,7 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {} }:
                 clearPredictions()
                 return
             }
+            console.log('Hello')
             setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: true }))
             autocompleteRef.current?.getPlacePredictions({ ...requestOptions, input: place }, (data, status) => {
                 setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: false, status: status, data: data ?? [] }))
