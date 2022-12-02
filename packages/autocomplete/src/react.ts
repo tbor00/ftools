@@ -9,13 +9,13 @@ export type defaultsTypes = {
     shouldPrediction?: boolean
     isLoading?: boolean
     status?: PlacesServiceStatus
-    data?: any[] | AutocompletePredictions
+    data?: AutocompletePredictions[] | any[]
 }
 
 export interface Predictions {
     readonly isLoading: boolean
     readonly status: PlacesServiceStatus
-    data: AutocompletePredictions | any
+    data: AutocompletePredictions[] | any[]
 }
 
 export interface useAutocompleteArgs {
@@ -41,19 +41,18 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {} }:
         data: defaultData
     } = defaults as defaultsTypes
 
-    const autocompleteRef = useRef<google.maps.places.AutocompleteService>()
-    const [place, setPlaceText] = useState('')
+    const [place, setPlaceText] = useState<string>('')
     const [predictions, setPredictions] = useState<Predictions>({
         isLoading: false,
         status: '',
         data: []
     })
 
+    const autocompleteRef = useRef<google.maps.places.AutocompleteService>()
+    const requestOptionsRef = useRef(requestOptions)
+
     const initMap = useCallback(() => {
-        if (autocompleteRef.current) return
-        if (!gmapsApiIsLoaded(true)) {
-            return
-        }
+        if (autocompleteRef.current || !gmapsApiIsLoaded(true)) return
         const libPlaces = google?.maps?.places
         autocompleteRef.current = new libPlaces.AutocompleteService()
     }, [])
@@ -70,11 +69,11 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {} }:
                 return
             }
             setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: true }))
-            autocompleteRef.current?.getPlacePredictions({ ...requestOptions, input: place }, (data, status) => {
+            autocompleteRef.current?.getPlacePredictions({ ...requestOptionsRef.current, input: place }, (data, status) => {
                 setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: false, status: status, data: data ?? [] }))
             })
         }, debounce),
-        [clearPredictions, debounce, requestOptions]
+        [clearPredictions, requestOptionsRef]
     )
 
     /* A callback function that is used to set the place value and get predictions. */
