@@ -1,5 +1,11 @@
 # @ftools-suit/autocomplete
 
+## 2.1.1
+
+### Patch Changes
+
+-   6713464: autocomplete: Convert requestOptions to reference and fix types
+
 ## 2.1.0
 
 ### Minor Changes
