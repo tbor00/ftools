@@ -133,6 +133,8 @@ import { getGeoCode } from '@ftools-suit/autocomplete/geocode'
 To obtain a final geocoding address and its mapped components:
 
 ```js
+import { geoMappedAddress } from '@ftools-suit/autocomplete/geocode'
+
 const handleSelect = async (placeId) => {
     const { street, streetNumber, zipCode, neighborhood, state, lat, lng, country, plusCode, subpremise, parking, floor, intersection, fullAddress } = await geoMappedAddress(placeId)
     // Now you can do whatever you want with this data...
