@@ -35,7 +35,7 @@ export interface useAutoCompleteReturn {
 export default function ({ debounce = 300, defaults = {}, requestOptions = {} }: useAutocompleteArgs = {}): useAutoCompleteReturn {
     const {
         place: defaultPlace,
-        shouldPrediction: defaultShouldPrediction,
+        shouldPrediction: defaultShouldPrediction = false,
         isLoading: defaultIsLoading,
         status: defaultStatus,
         data: defaultData
