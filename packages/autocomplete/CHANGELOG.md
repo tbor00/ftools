@@ -1,5 +1,11 @@
 # @ftools-suit/autocomplete
 
+## 2.1.2
+
+### Patch Changes
+
+-   4e490f8: set defaultShouldPrediction in false
+
 ## 2.1.1
 
 ### Patch Changes
