@@ -35,11 +35,13 @@ const createInstance = (baseUrl, moreOptions = {}) => {
     })
 }
 
-export default HttpClient = {
+const HttpClient = {
     get,
     post,
     put,
     patch,
     delete: deleteReq
 }
+
+export default HttpClient
 export { createInstance }
