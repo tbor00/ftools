@@ -69,7 +69,7 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {}, c
             if (!data) return []
             const comparable = customFiltersRef.current.state || ''
             return data.filter(({ description }) => {
-                description.toLowerCase().includes(comparable)
+                description.toLowerCase().includes(comparable.toLowerCase())
             })
         },
         [customFiltersRef]
@@ -84,10 +84,11 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {}, c
             setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: true }))
             autocompleteRef.current?.getPlacePredictions({ ...requestOptionsRef.current, input: place }, (data, status) => {
                 const dataFiltered = filterPredictions(data)
-                setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: false, status: status, data: dataFiltered }))
+                const statusFinal = dataFiltered.length === 0 ? 'ZERO_RESULTS' : status
+                setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: false, status: statusFinal, data: dataFiltered }))
             })
         }, debounce),
-        [clearPredictions, requestOptionsRef]
+        [clearPredictions, requestOptionsRef, filterPredictions]
     )
 
     /* A callback function that is used to set the place value and get predictions. */
