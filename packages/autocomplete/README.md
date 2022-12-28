@@ -96,8 +96,9 @@ To improve the autocomplete hook we can pass an object as a parameter to indicat
 const autocomplete = useAutocomplete({
     debounce: 200,
     requestOptions: {
-        componentRestrictions: { country: ['ar', 'mx'] }
+        componentRestrictions: { country: ['mx'] } // To filter by country
     },
+    customFilters: { state: 'cdmx' }, // To filter by state
     defaults: {
         place: 'San Diego 332'
     }
@@ -108,11 +109,13 @@ const autocomplete = useAutocomplete({
 
 Options to pass to the hook
 
-| Key              | Type            | Default              | Description                                                                                                                                                                                                             |
-| ---------------- | --------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `debounce`       | number          | `200`                | Milisecons delay before making a request with Google places 
-| `requestOptions` | object          |     `{}`                 |[requestOptions documentation google autocomplete](https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest)                                                                                                                        
-| `defaults`   | object          | `{ place: '', shouldPrediction: false, isLoading: false, status: '' }`                 | Defaults value to setter on a hook
+| Key | Type | Default | Description |
+| -- | -- | -- | -- |
+| `debounce` | number | `300` | Milisecons delay before making a request with Google places 
+| `requestOptions` | object | `{}` | [Docs](https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest)
+| `customFilters` | object | `{state: undefined}` | Customizable filters to return predictions
+| `defaults` | object | `{ place: '', shouldPrediction: false, isLoading: false, status: '' }` | Defaults value to setter on a hook
+
 
 ## GeoCode
 
