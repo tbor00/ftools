@@ -46,7 +46,8 @@ To obtain the query parameters of a url
 ```js
 import { getQueryParamsWithProxy } from '@ftools-suit/utils/processing'
 
-const { id } = getQueryParamsWithProxy()
+// example url: http://localhost:3000?id=3
+const { id } = getQueryParamsWithProxy() // 3
 ```
 
 ## Files
