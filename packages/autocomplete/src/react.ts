@@ -36,7 +36,7 @@ export interface useAutoCompleteReturn {
 export default function ({ debounce = 300, defaults = {}, requestOptions = {}, customFilters = {} }: useAutocompleteArgs = {}): useAutoCompleteReturn {
     const {
         place: defaultPlace,
-        shouldPrediction: defaultShouldPrediction = false,
+        shouldPrediction: defaultShouldPrediction,
         isLoading: defaultIsLoading,
         status: defaultStatus,
         data: defaultData
@@ -67,7 +67,7 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {}, c
     const filterPredictions = useCallback(
         (data: AutocompletePredictions[]) => {
             if (!data) return []
-            let comparable = customFiltersRef.current.state || ''
+            const comparable = customFiltersRef.current.state || ''
             return data.filter(({ description }) => {
                 description.toLowerCase().includes(comparable)
             })
