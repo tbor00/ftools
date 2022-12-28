@@ -69,7 +69,7 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {}, c
             if (!data) return []
 
             const comparable = customFiltersRef.current.state
-            if (!comparable.length) return data
+            if (!comparable || !comparable.length) return data
 
             return data.filter(({ description }) => {
                 return description.toLowerCase().includes(comparable.toLowerCase())
