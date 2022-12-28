@@ -62,6 +62,13 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {} }:
         setPredictions({ isLoading: defaultIsLoading ?? false, status: defaultStatus ?? '', data: defaultData ?? [] })
     }, [defaultIsLoading, defaultStatus, defaultData])
 
+    const filterPredictions = useCallback((data, comparables) => {
+        if (!data) return []
+        return data.filter(({ description }) => {
+            description.toLowerCase().includes(comparables)
+        })
+    }, [])
+
     const getPredictions = useCallback(
         miniDebounce((place: string) => {
             if (!place) {
@@ -69,8 +76,13 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {} }:
                 return
             }
             setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: true }))
+
+            let placesMatching = requestOptionsRef.current.state || []
+            delete requestOptionsRef.current.state
+
             autocompleteRef.current?.getPlacePredictions({ ...requestOptionsRef.current, input: place }, (data, status) => {
-                setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: false, status: status, data: data ?? [] }))
+                const dataFiltered = filterPredictions(data, placesMatching)
+                setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: false, status: status, data: dataFiltered }))
             })
         }, debounce),
         [clearPredictions, requestOptionsRef]
