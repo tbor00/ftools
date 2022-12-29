@@ -22,6 +22,7 @@ export interface useAutocompleteArgs {
     debounce?: number
     defaults?: defaultsTypes
     requestOptions?: Omit<google.maps.places.AutocompletionRequest, 'input'>
+    customFilters?: { state?: string }
 }
 
 export interface useAutoCompleteReturn {
@@ -32,10 +33,10 @@ export interface useAutoCompleteReturn {
     getAutoCompleteRef(): AutocompleteService | undefined
 }
 
-export default function ({ debounce = 300, defaults = {}, requestOptions = {} }: useAutocompleteArgs = {}): useAutoCompleteReturn {
+export default function ({ debounce = 300, defaults = {}, requestOptions = {}, customFilters = {} }: useAutocompleteArgs = {}): useAutoCompleteReturn {
     const {
         place: defaultPlace,
-        shouldPrediction: defaultShouldPrediction = false,
+        shouldPrediction: defaultShouldPrediction,
         isLoading: defaultIsLoading,
         status: defaultStatus,
         data: defaultData
@@ -50,6 +51,7 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {} }:
 
     const autocompleteRef = useRef<google.maps.places.AutocompleteService>()
     const requestOptionsRef = useRef(requestOptions)
+    const customFiltersRef = useRef(customFilters)
 
     const initMap = useCallback(() => {
         if (autocompleteRef.current || !gmapsApiIsLoaded(true)) return
@@ -62,6 +64,20 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {} }:
         setPredictions({ isLoading: defaultIsLoading ?? false, status: defaultStatus ?? '', data: defaultData ?? [] })
     }, [defaultIsLoading, defaultStatus, defaultData])
 
+    const filterPredictions = useCallback(
+        (data: AutocompletePredictions[]) => {
+            if (!data) return []
+
+            const comparable = customFiltersRef.current.state
+            if (!comparable || !comparable.length) return data
+
+            return data.filter(({ description }) => {
+                return description.toLowerCase().includes(comparable.toLowerCase())
+            })
+        },
+        [customFiltersRef]
+    )
+
     const getPredictions = useCallback(
         miniDebounce((place: string) => {
             if (!place) {
@@ -70,10 +86,12 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {} }:
             }
             setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: true }))
             autocompleteRef.current?.getPlacePredictions({ ...requestOptionsRef.current, input: place }, (data, status) => {
-                setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: false, status: status, data: data ?? [] }))
+                const dataFiltered = filterPredictions(data)
+                const statusFinal = dataFiltered.length === 0 ? 'ZERO_RESULTS' : status
+                setPredictions((prevPredictions: Predictions) => ({ ...prevPredictions, isLoading: false, status: statusFinal, data: dataFiltered }))
             })
         }, debounce),
-        [clearPredictions, requestOptionsRef]
+        [clearPredictions, requestOptionsRef, filterPredictions]
     )
 
     /* A callback function that is used to set the place value and get predictions. */
