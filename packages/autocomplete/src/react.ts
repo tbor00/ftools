@@ -51,7 +51,7 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {}, c
 
     const autocompleteRef = useRef<google.maps.places.AutocompleteService>()
     const requestOptionsRef = useRef(requestOptions)
-    const customFiltersRef = useRef(customFilters)
+    const customFiltersRef = useRef<useAutocompleteArgs['customFilters']>(customFilters)
 
     const initMap = useCallback(() => {
         if (autocompleteRef.current || !gmapsApiIsLoaded(true)) return
