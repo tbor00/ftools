@@ -115,5 +115,5 @@ export default function ({ debounce = 300, defaults = {}, requestOptions = {}, c
         defaultPlace && setPlace(defaultPlace, defaultShouldPrediction)
     }, [defaultPlace])
 
-    return { place, predictions, setPlace, clearPredictions, getAutoCompleteRef }
+    return { place, setPlace, predictions, clearPredictions, getAutoCompleteRef }
 }
