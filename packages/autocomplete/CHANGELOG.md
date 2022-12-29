@@ -1,5 +1,11 @@
 # @ftools-suit/autocomplete
 
+## 2.2.0
+
+### Minor Changes
+
+-   781a614: add customFilter to filter predictions by state
+
 ## 2.1.2
 
 ### Patch Changes

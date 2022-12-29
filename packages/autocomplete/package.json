@@ -1,6 +1,6 @@
 {
     "name": "@ftools-suit/autocomplete",
-    "version": "2.1.2",
+    "version": "2.2.0",
     "description": "Autocomplete and geocoding functions/hooks of google maps",
     "private": false,
     "repository": {
