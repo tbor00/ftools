@@ -116,6 +116,17 @@ Options to pass to the hook
 | `customFilters` | object | `{state: undefined}` | Customizable filters to return predictions
 | `defaults` | object | `{ place: '', shouldPrediction: false, isLoading: false, status: '' }` | Defaults value to setter on a hook
 
+### Return Object
+
+Object returned by hook `useAutocomplete`
+
+| Key | Type | Description |
+| -- | -- | -- |
+| `place` | string | Address the user wants to search
+| `setPlace` | function | Function to set value to `place`
+| `predictions` | object | Containing the prediction data, the status, and a loader
+| `clearPredictions` | function | Clean all predictions
+| `getAutoCompleteRef` | function | To obtain the autocomplete reference
 
 ## GeoCode
 
