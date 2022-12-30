@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React from 'react';
 
 /**
  *  This hook returns the json response of a request
@@ -10,11 +10,11 @@ import { useEffect, useState } from 'react'
  * is the error element it doesn't return null if the request returned an error
  */
 export default function useGet(url, options) {
-    const [response, setResponse] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [response, setResponse] = React.useState(null);
+    const [loading, setLoading] = React.useState(true);
+    const [error, setError] = React.useState(null);
 
-    useEffect(() => {
+    React.useEffect(() => {
         fetch(url, options)
             .then(res => res.json())
             .then(data => {
