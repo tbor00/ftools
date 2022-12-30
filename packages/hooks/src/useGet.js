@@ -22,7 +22,7 @@ export default function useGet(url, options) {
                 setResponse(data)
             })
             .catch(err => setError(err));
-    }, [])
+    }, [options, url])
 
     return [response, loading, error];
 }
