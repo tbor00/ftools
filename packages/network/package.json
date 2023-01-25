@@ -39,7 +39,7 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "axios": "0.27.2"
+        "axios": "1.2.4"
     },
     "babel": {
         "extends": "../../babel.config.json"
